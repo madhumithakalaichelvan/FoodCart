@@ -48,7 +48,7 @@ export default function Cart() {
                                     </div>
                                     <div className="cartElementMargin cartIncBtn">
                                         <Button className="cartCounterBtn" onClick={() => { handelCartCountUpdate("Dec", item.title) }} >-</Button>
-                                        <Button className="cartCounterBtn cartCountervalue" >{item.count}</Button>
+                                                                                <Button className="cartCounterBtn cartCountervalue" >{item.count}</Button>
                                         <Button className="cartCounterBtn" onClick={() => { handelCartCountUpdate("Inc", item.title) }}>+</Button>
                                     </div>
                                 </Card>
@@ -82,39 +82,30 @@ export default function Cart() {
                 <Row className="orderMealRow">
                     <h1>Your cart is empty. Kindly add items to continue shopping</h1>  
                     <Col className="orderCol" xs={12} md={8} lg={8} xl={8}>
-                    {orderLists.length > 0 && (
-                            <div>
-                                <h5>Orders</h5>
-
-                                {orderLists.map((item) => (
-                                    <Card className="orderMealCard">
-                                        <div className="orderId">
-                                            <h5>{"Order ID : " + item.orderId}</h5>
-                                            <h5>{"Total : $ " + item.totalAmount}</h5>
-                                        </div>
-                                        <Card.Title className="" >{"Items"}</Card.Title>
-                                        {item.orderData.map((data) => {
-                                            return (<>
-                                                <div className="orderList">
-                                                    <div className="orderDetails">
-                                                        <Card.Img className="orderMealImage" variant="top" src={data.data.strMealThumb} />
-                                                        <div className="orderElementMargin">
-                                                            <Card.Title className="titlePadding" >{data.title}</Card.Title>
-                                                            <Card.Subtitle className="titlePadding" >{"$ " + data.data.idMeal}</Card.Subtitle>
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <Card.Subtitle className="titlePadding" >{data.count + " x " + data.data.idMeal + " = $ " + data.count * data.data.idMeal}</Card.Subtitle>
-                                                    </div>
-                                                </div>
-                                            </>)
-                                        })}
-
-                                    </Card>
-                                ))}
-                                
+                    {orderLists.map((order) => (
+                        <Card className="orderMealCard" key={order.orderId}>
+                            <div className="orderId">
+                                <h5>{"Order ID : " + order.orderId}</h5>
+                                <h5>{"Total : $ " + order.totalAmount}</h5>
                             </div>
-                        )}
+                            <Card.Title className="">{"Items"}</Card.Title>
+                            {order.orderData.filter(item => item.count > 0).map((item) => (
+                                <div className="orderList" key={item.title}>
+                                    <div className="orderDetails">
+                                        <Card.Img className="orderMealImage" variant="top" src={item.data.strMealThumb} />
+                                        <div className="orderElementMargin">
+                                            <Card.Title className="titlePadding">{item.title}</Card.Title>
+                                            <Card.Subtitle className="titlePadding">{"$ " + item.data.idMeal}</Card.Subtitle>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <Card.Subtitle className="titlePadding">{item.count + " x " + item.data.idMeal + " = $ " + item.count * item.data.idMeal}</Card.Subtitle>
+                                    </div>
+                                </div>
+                            ))}
+                        </Card>
+                    ))
+                        }
                     </Col>
 
                 </Row>
