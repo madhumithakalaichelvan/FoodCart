@@ -1,0 +1,108 @@
+.categoriesRow{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.categoriesCol{
+    padding: 20px 50px !important;
+}
+.categoriesColSingle{
+    padding: 10px 50px !important;
+}
+.categoriesCard{
+    cursor: pointer;
+}
+.categoriesBody{
+    border-top: 1px solid rgb(198, 193, 193);
+}
+.categoriesImage{
+    padding: 40px !important;
+    border-radius: 70px !important;
+
+}
+.titlePadding{
+    padding: 10px 0px ;
+}
+
+.addtoCardButton{
+    width: 100%  !important;
+    cursor: pointer;
+}
+
+.categoryRoute{
+    margin: 0px;
+    margin-top: 30px;
+    padding-left: 50px;
+}
+
+.selectedMealRow{
+    padding: 30px 50px;
+}
+
+.selectedMealCard{
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.selectedMealImage{
+   height: 300px !important;
+   width: 300px !important;
+}
+
+.clickEvent{
+   cursor: pointer;
+}
+
+.selectedMealBody{
+    height: 300px !important;
+    width: 100% !important;
+}
+.selectedMealText{
+    height: 150px !important;
+    overflow-y: auto;
+}
+
+.cartCounterBtn{
+    background-color: white !important;
+    color: black !important;
+    margin-right: 10px !important;
+    border-radius: 10px !important;
+}
+.cartCountervalue{
+    background-color: white !important;
+    color: black !important;
+    margin-right: 10px !important;
+    border-radius: 10px !important;
+    cursor: default !important;
+}
+
+
+
+@media(max-width: 800px){
+
+    .selectedMealCard{
+        padding: 0px !important;
+    }
+    .categoriesImage{
+        padding: 20px !important;
+        border-radius: 40px !important;
+    }
+    .addtoCardButton{
+        width: 100%  !important;
+        cursor: pointer;
+        font-size: 15px !important;
+    }
+
+    .titlePadding{
+        padding: 5px 0px ;
+    }
+    .categoriesColSingle{
+        padding: 10px 35px !important;
+    }
+    .categoriesCol{
+        padding: 10px 35px !important;
+    }
+}

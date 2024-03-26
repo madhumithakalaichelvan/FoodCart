@@ -1,0 +1,138 @@
+
+.cartMealRow{
+    padding: 10px 50px;
+    width: 100%;
+}
+.cartOrderCol{
+    height: 70vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.cartMealCard{
+    padding: 0px 40px;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cartOrderDetails{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.cartMealImage{
+   height: 60px !important;
+   width: 60px !important;
+}
+
+.cartMealBody{
+    max-height: 60vh !important;
+    width: 100% !important;
+    overflow-y: auto;
+}
+.cartMealText{
+    height: 150px !important;
+    overflow-y: auto;
+}
+
+.cartElementMargin{
+    margin-left: 10px;
+}
+
+.cartIncBtn{
+    float: right;
+}
+
+
+
+
+.totalAmount{
+    float: right;
+    margin-top: 20px;
+}
+
+
+
+.orderId{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.orderMealRow{
+    margin: 50px !important;
+}
+
+.orderCol{
+    padding: 10px ;
+}
+.orderMealImage{
+    height: 60px !important;
+    width: 60px !important;
+}
+
+.orderMealCard{
+    padding: 20px 40px;
+    margin-top: 20px !important;
+}
+.orderList{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.orderDetails{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.orderElementMargin{
+    margin-left: 20px ;
+}
+
+
+@media(max-width: 800px){
+    .cartMealRow{
+        padding: 10px 10px;
+    }
+    .cartMealCard{
+        height: 70vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    .cartMealCard{
+        padding: 0px 10px;
+    }
+    .cartMealImage{
+        height: 30px !important;
+        width: 30px !important;
+     }
+     .card-title{
+        font-size: 15px !important;
+     }
+     .card-subtitle{
+        font-size: 12px !important;
+     }
+     .cartCounterBtn{
+        font-size: 12px !important;
+        font-weight: 700 !important;
+     }
+     .cartOrderCol{
+        height: auto !important;
+     }
+
+
+     .orderMealRow{
+        margin: 10px !important;
+      }
+
+    .orderMealCard{
+        padding: 10px 10px;
+    }
+}

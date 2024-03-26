@@ -1,0 +1,43 @@
+nav{
+    background-color: #dddeed;
+    height: 50px;
+    width: 100%;
+  }
+          
+  nav ul{
+    margin-right: 20px;
+  }
+
+  #setting{
+    float: right;
+  }
+
+  #cart{
+    float: right;
+  }
+
+  nav ul li{
+    display: inline-block;
+    line-height: 50px;
+    margin: 0 5px;
+  }
+  nav ul li a{
+    color: rgb(0, 0, 0);
+    font-size: 17px;
+    font-weight: 600;
+    padding: 7px 13px;
+    border-radius: 3px;
+    text-decoration: none;
+  }
+
+  .notification-badge{
+    
+      background-color: #fa3e3e;
+      border-radius: 2px;
+      color: white;
+      padding: 1px 3px;
+      font-size: 10px;
+      top: 0;
+      right: 0;
+    
+  }
