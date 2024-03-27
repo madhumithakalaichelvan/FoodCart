@@ -13,12 +13,13 @@ export default function SingleCategory() {
     const data = useSelector((state) => state.foodReducer.selectedCategory)
     const selectedTitle = useSelector((state) => state.foodReducer.selectedCategoryTitle)
     const selectedMealTitle = useSelector((state) => state.foodReducer.selectedMealsTitle)
-    const selectedMealData = useSelector((state) => state.foodReducer.selectedMeals)
+        const selectedMealData = useSelector((state) => state.foodReducer.selectedMeals)
     const cartListData = useSelector((state) => state.foodReducer.cartList)
     const selectedMealCartcount = cartListData.find((item) =>
         item.title == selectedMealTitle
     )
     const [isLoading, setIsLoading] = useState([]);
+    const foundMeal= selectedMealData?.meals.find((data) => data.strMeal == selectedMealTitle)
 
     useEffect(() => {
 
@@ -97,27 +98,34 @@ export default function SingleCategory() {
                 : ""}
             </Row>
         </div> :
-            <div>
+                    <div>
                 <Row className="selectedMealRow">
-                    <Col xs={12} md={7} lg={7} xl={7}>
-                        <Card className="selectedMealCard">
-                            <Card.Img className="selectedMealImage" variant="top" src={selectedMealData?.meals[0]?.strMealThumb} />
+                
+                         {foundMeal &&(
+                            <>
+                            <Col xs={12} md={7} lg={7} xl={7}>
+                             <Card className="selectedMealCard">
+                                {console.log(foundMeal,"foundMeal")}
+                            <Card.Img className="selectedMealImage" variant="top" src={foundMeal?.strMealThumb} />
                         </Card>
                     </Col>
                     <Col xs={12} md={5} lg={5} xl={5}>
                         <Card className="selectedMealCard">
                             <Card.Body className="selectedMealBody">
-                                <Card.Title className="titlePadding" >{selectedMealData?.meals[0]?.strMeal}</Card.Title>
-                                <Card.Subtitle className="titlePadding" >{"$ " + selectedMealData?.meals[0]?.idMeal}</Card.Subtitle>
-                                <Card.Text className="selectedMealText">{selectedMealData?.meals[0]?.strInstructions}</Card.Text>
+                                <Card.Title className="titlePadding" >{foundMeal?.strMeal}</Card.Title>
+                                <Card.Subtitle className="titlePadding" >{"$ " + foundMeal?.idMeal}</Card.Subtitle>
+                                <Card.Text className="selectedMealText">{foundMeal?.strInstructions}</Card.Text>
                                 <span className="">
-                                    <Button className="cartCounterBtn" onClick={() => { handelCartCountUpdate("Dec", selectedMealData?.meals[0]?.strMeal) }} >-</Button>
+                                    <Button className="cartCounterBtn" onClick={() => { handelCartCountUpdate("Dec", foundMeal?.strMeal) }} >-</Button>
                                     <Button className="cartCountervalue" >{selectedMealCartcount?.count}</Button>
-                                    <Button className="cartCounterBtn" onClick={() => { handelCartCountUpdate("Inc", selectedMealData?.meals[0]?.strMeal) }}>+</Button>
+                                    <Button className="cartCounterBtn" onClick={() => { handelCartCountUpdate("Inc", foundMeal?.strMeal) }}>+</Button>
                                 </span>
                             </Card.Body>
                         </Card>
                     </Col>
+                            </>
+                         )}
+                       
                 </Row>
             </div>
         }
