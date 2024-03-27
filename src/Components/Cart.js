@@ -36,7 +36,7 @@ export default function Cart() {
                 <Row className="cartMealRow">
                     <h5>Cart Items</h5>
                     <Col className="cartOrderCol" xs={12} md={8} lg={8} xl={8}>
-                        {cartListData.length > 0 ? cartListData.map((item) => {
+                        {cartListData.length > 0 ?cartListData.filter(items=>items.count>0).map((item) => {
                             return (<>
                                 <Card className="cartMealCard">
                                     <div className="cartOrderDetails">
@@ -48,7 +48,7 @@ export default function Cart() {
                                     </div>
                                     <div className="cartElementMargin cartIncBtn">
                                         <Button className="cartCounterBtn" onClick={() => { handelCartCountUpdate("Dec", item.title) }} >-</Button>
-                                                                                <Button className="cartCounterBtn cartCountervalue" >{item.count}</Button>
+                                        <Button className="cartCounterBtn cartCountervalue" >{item.count}</Button>
                                         <Button className="cartCounterBtn" onClick={() => { handelCartCountUpdate("Inc", item.title) }}>+</Button>
                                     </div>
                                 </Card>
@@ -59,7 +59,7 @@ export default function Cart() {
                     <Col xs={12} md={4} lg={4} xl={4}>
                         <Card className="cardOrderDetails">
                             <Card.Body className="cartMealBody">
-                                {cartListData.length > 0 ? cartListData.map((item) => {
+                                {cartListData.length > 0 ? cartListData.filter(items=>items.count>0).map((item) => {
                                     totalAmount = totalAmount + item.count*item.data.idMeal
                                     return (<>
                                         <div className="cartOrderDetails">
@@ -82,6 +82,8 @@ export default function Cart() {
                 <Row className="orderMealRow">
                     <h1>Your cart is empty. Kindly add items to continue shopping</h1>  
                     <Col className="orderCol" xs={12} md={8} lg={8} xl={8}>
+                    
+                    <h4>Orders</h4>
                     {orderLists.map((order) => (
                         <Card className="orderMealCard" key={order.orderId}>
                             <div className="orderId">

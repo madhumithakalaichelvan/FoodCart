@@ -38,30 +38,38 @@ const FoodReducer = createSlice({
                                     ...item,
                                     count: item.count + 1
                                 };
-                            }
-                            return item;
+                                                            }
+                                                        return item;
                         })
                     };
-                case "Dec":
-                    return {
-                        ...state,
-                        cartList: state.cartList.map(item => {
-                            if (item.title === action.payload.title) {
-                                return {
-                                    ...item,
-                                    count: item.count>0? item.count- 1:item.count
-                                };
-                            }
-                            return item;
-                        })
-                    };
-                case "default":
-                    return {
-                        ...state,
-                        cartList: [...state.cartList, action.payload]
-                    };
-                default:
-                    return state;
+                    case "Dec":
+                        return {
+                            ...state,
+                            cartList: state.cartList
+                                .map(item => {
+                                    if (item.title === action.payload.title) {
+                                        const newCount = item.count > 0 ? item.count - 1 : item.count;
+                                        if (newCount > 0) {
+                                            return {
+                                                ...item,
+                                                count: newCount
+                                            };
+                                        } else {
+                                            return undefined;
+                                        }
+                                    }
+                                    return item;
+                                })
+                                .filter(item => item !== undefined)
+                        };
+                    case "default":
+                        return {
+                            ...state,
+                            cartList: [...state.cartList, action.payload]
+                        };
+                    default:
+                        return state;
+                    
             }
         },
         removeCartList(state,action){

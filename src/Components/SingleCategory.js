@@ -38,12 +38,11 @@ export default function SingleCategory() {
 
 
     const handelMeals = async (item,itemIndex) => {
-        setIsLoading(prev => ({
+               setIsLoading(prev => ({
             ...prev,
             [itemIndex]: true 
         }));
         const data = await CustomApi("https://www.themealdb.com/api/json/v1/1/search.php?s=" + item)
-        console.log(data,"datafromhandlemeals")
         dispatch(selectedMeals(data))
         dispatch(selectedMealsTitle(item))
 
@@ -61,7 +60,7 @@ export default function SingleCategory() {
     }
 
     const handelCartCountUpdate = (type, meal) => {
-        const cartListData = {
+                const cartListData = {
             "title": meal,
             "type": type
         }
@@ -72,12 +71,8 @@ export default function SingleCategory() {
         <h5 className="categoryRoute"><span onClick={() => { handelAllCategory() }} className="clickEvent">All Category</span><span className="clickEvent" onClick={() => { handelSelectedCategory() }}>{"/ " + selectedTitle}</span><span>{selectedMealTitle == "" ? "": "/ " + selectedMealTitle}</span></h5>
         {selectedMealTitle == "" ? <div>
             <Row className="categoriesRow">
-              {console.log(data,"data.title")}
                 {data?.data?.meals?.length > 0 ? data.data.meals.map((item, index) => {
-                    {console.log(data.data.meals,"data.data.meals")}
-                    {console.log(cartListData,"cartListData")}
                     const cartdata = cartListData.find((data) => data.title == item.strMeal)
-                    console.log(cartdata,"cartdata")
                     return (<>
                         <Col className="categoriesColSingle" xs={6} md={4} lg={3} xl={3} >
                             <Card className="">
@@ -86,7 +81,7 @@ export default function SingleCategory() {
                                     <Card.Title className="titlePadding" >{item.strMeal}</Card.Title>
                                     <Card.Subtitle className="titlePadding" >{"$ " + item.idMeal}</Card.Subtitle>
                                     {cartdata == undefined || cartdata == {} || cartdata.count == 0 ?
-                                        <Button   disabled={isLoading[index]} onClick={() => { handelMeals(item.strMeal,index) }} className="addtoCardButton" variant="primary">{isLoading[index] ? 'Adding...' : 'Add To Cart'}</Button>
+                                        <Button   disabled={isLoading[index]} onClick={() => {handelMeals(item.strMeal,index) }} className="addtoCardButton" variant="primary">{isLoading[index] ? 'Adding...' : 'Add To Cart'}</Button>
                                         : 
                                         <span className="addtoCardButton">
                                             <Button className="cartCounterBtn" onClick={() => { handelCartCountUpdate("Dec", item.strMeal) }} >-</Button>
