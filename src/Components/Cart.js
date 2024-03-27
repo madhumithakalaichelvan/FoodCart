@@ -82,8 +82,9 @@ export default function Cart() {
                 <Row className="orderMealRow">
                     <h1>Your cart is empty. Kindly add items to continue shopping</h1>  
                     <Col className="orderCol" xs={12} md={8} lg={8} xl={8}>
-                    
+                    {orderLists.length>0?
                     <h4>Orders</h4>
+                    : ""}
                     {orderLists.map((order) => (
                         <Card className="orderMealCard" key={order.orderId}>
                             <div className="orderId">
